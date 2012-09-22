@@ -15,10 +15,10 @@
 # Video decoding
 PRODUCT_PACKAGES += \
     libstagefrighthw \
-    libmm-omxcore \
-    libOmxCore \
-    libOmxVidEnc \
-    libdivxdrmdecrypt
+#    libmm-omxcore \
+#    libOmxCore \
+#    libOmxVidEnc \
+#    libdivxdrmdecrypt
   
 # Graphics 
 PRODUCT_PACKAGES += \
@@ -203,6 +203,9 @@ PRODUCT_NAME := pico
 PRODUCT_DEVICE := pico
 PRODUCT_MODEL := HTC Explorer A310e
 PRODUCT_BRAND := htc_europe
+
+# Full-featured build of the Open-Source
+$(call inherit-product, build/target/product/full.mk)
 
 # Mdpi assets
 PRODUCT_AAPT_CONFIG := normal mdpi
