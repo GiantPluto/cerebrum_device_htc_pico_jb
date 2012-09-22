@@ -85,8 +85,8 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x09600000
 BOARD_FLASH_BLOCK_SIZE := 262144
 
 # Prebuilt kernel
-TARGET_KERNEL_CONFIG := htc_pico_defconfig
-TARGET_USE_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
+#TARGET_KERNEL_CONFIG := htc_pico_defconfig
+#TARGET_USE_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_PREBUILT_KERNEL := device/htc/pico/prebuilt/kernel # As a fallback
 
 # Vold
