@@ -70,7 +70,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # Vold 
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/etc/vold.fstab:system/etc/vold.fstab 
+    device/htc/pico/prebuilt/etc/vold.fstab:system/etc/vold.fstab 
 
 # Prebuilt Modules
 PRODUCT_COPY_FILES += \
