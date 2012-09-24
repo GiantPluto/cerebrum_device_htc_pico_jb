@@ -15,10 +15,10 @@
 # Video decoding
 PRODUCT_PACKAGES += \
     libstagefrighthw \
-#    libmm-omxcore \
-#    libOmxCore \
-#    libOmxVidEnc \
-#    libdivxdrmdecrypt
+    libmm-omxcore \
+    libOmxCore \
+    libOmxVidEnc \
+    libdivxdrmdecrypt
   
 # Graphics 
 PRODUCT_PACKAGES += \
