@@ -227,10 +227,10 @@ extern int switch_mode( int nMode ) {
         close(i2cfd);
     }
     if( 0 != rc ) {
-        ALOGE("switch mode failed with error:%d",rc);
+        LOGE("switch mode failed with error:%d",rc);
     }
 #else
-    ALOGE("switch mode failed because QCOM_FM feature is not available");
+    LOGE("switch mode failed because QCOM_FM feature is not available");
 #endif
     return rc;
 }
