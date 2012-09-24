@@ -33,6 +33,7 @@ on boot
 
     # Permissions for Liblights.
     chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/blink
     chown system system /sys/class/leds/amber/brightness
     chown system system /sys/class/leds/amber/blink
