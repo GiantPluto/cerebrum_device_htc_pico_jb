@@ -50,7 +50,7 @@ TARGET_NO_RADIOIMAGE := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/htc/pico/recovery/recovery_ui.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/htc/pico/recovery/graphics.c
 TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/pico/prebuilt/recovery_kernel
-TARGET_RECOVERY_INITRC := device/htc/pico/files/recovery.rc
+TARGET_RECOVERY_INITRC := device/htc/pico/prebuilt/root/recovery.rc
 TARGET_RECOVERY_FSTAB := device/htc/pico/recovery.fstab
 BOARD_RECOVERY_HANDLES_MOUNT := true
 
