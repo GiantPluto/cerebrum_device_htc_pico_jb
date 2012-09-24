@@ -122,6 +122,7 @@ ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 debug.sf.hw=1
 debug.composition.7x27A.type=mdp
+debug.hwc.dynThreshold=1.9
 media.stagefright.enable-player=true
 media.stagefright.enable-meta=false
 media.stagefright.enable-scan=true
