@@ -1,3 +1,5 @@
 Device Config for Htc Explorer(Pico) for building Cerebrum(AOSP Jellybean)
 
 WORK IN PROGRESS(WIP)
+
+Status: Boots to a black screen with lots of fc's(/data/dalvik-cache isnt writable)

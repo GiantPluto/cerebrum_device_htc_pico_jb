@@ -1,4 +1,4 @@
-## Specify phone tech before including full_phone
+# Specify phone tech before including full_phone
 $(call inherit-product, vendor/cerebrum/config/gsm.mk)
 
 # Release name and versioning
@@ -20,6 +20,3 @@ PRODUCT_MODEL := HTC Explorer A310e
 PRODUCT_MANUFACTURER := HTC
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=pico BUILD_ID=JR003L BUILD_FINGERPRINT=htc_asia_india/htc_pico/pico:2.3.5/GRJ90/171430.1:user/release-keys PRIVATE_BUILD_DESC="1.12.720.1 CL171430 release-keys"
 
-
- 
--include vendor/cyanogen/products/common_versions.mk
