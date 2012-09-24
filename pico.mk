@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Full-featured build of the Open-Source
+$(call inherit-product, build/target/product/full.mk)
+
 # Video decoding
 PRODUCT_PACKAGES += \
     libstagefrighthw \
@@ -54,32 +57,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm7x27a \
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
-
 # Init
 PRODUCT_COPY_FILES += \
-    device/htc/pico/files/init.pico.rc:root/init.pico.rc \
-    device/htc/pico/files/ueventd.pico.rc:root/ueventd.pico.rc \
-    device/htc/pico/files/init.pico.usb.rc:root/init.pico.usb.rc
+    device/htc/pico/prebuilt/root/init.pico.rc:root/init.pico.rc \
+    device/htc/pico/prebuilt/root/ueventd.pico.rc:root/ueventd.pico.rc \
+    device/htc/pico/prebuilt/root/init.pico.usb.rc:root/init.pico.usb.rc
     
 # Set usb type
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mass_storage \
     persist.service.adb.enable=1
-
-DEVICE_PACKAGE_OVERLAYS += device/htc/pico/overlay
-
-# Publish that we support the live wallpaper feature.
-PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml 
-    PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
 
 # Vold 
 PRODUCT_COPY_FILES += \
@@ -92,7 +79,7 @@ PRODUCT_COPY_FILES += \
 
 # Releasetools
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/releasetools/extras.sh:system/bin/extras.sh
+    device/htc/pico/releasetools/extras.sh:system/bin/extras.sh
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -103,28 +90,13 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_COPY_FILES += \
     device/htc/pico/prebuilt/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
-    device/htc/pico/files/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/htc/pico/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/htc/pico/prebuilt/etc/AudioBTID.csv:system/etc/AudioBTID.csv \
     device/htc/pico/prebuilt/etc/AudioPara4.csv:system/etc/AudioPara4.csv \
     device/htc/pico/prebuilt/etc/AudioPara4_WB.csv:system/etc/AudioPara4_WB.csv \
     device/htc/pico/prebuilt/etc/AudioPreProcess.csv:system/etc/AudioPreProcess.csv \
     device/htc/pico/prebuilt/lib/libaudioeq.so:system/lib/libaudioeq.so \
     device/htc/pico/prebuilt/lib/libhtc_acoustic.so:system/lib/libhtc_acoustic.so
-
-# Device permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Sensors
 PRODUCT_COPY_FILES += \
@@ -191,21 +163,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.vold.umsdirtyratio=20
     
-# HardwareRenderer properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    hwui.render_dirty_regions=false
-
-# Misc properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    pm.sleep_mode=1
-
 PRODUCT_NAME := pico
 PRODUCT_DEVICE := pico
 PRODUCT_MODEL := HTC Explorer A310e
 PRODUCT_BRAND := htc_europe
-
-# Full-featured build of the Open-Source
-$(call inherit-product, build/target/product/full.mk)
 
 # Mdpi assets
 PRODUCT_AAPT_CONFIG := normal mdpi

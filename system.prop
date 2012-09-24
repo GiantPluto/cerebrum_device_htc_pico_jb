@@ -86,9 +86,6 @@ ro.ril.def.agps.mode = 2
 # For no auto focus devices
 ro.workaround.noautofocus = 1
 
-# default value of brightness
-settings.display.brightness=143
-
 # For HSDPA low throughput
 ro.ril.disable.power.collapse=0
 
@@ -121,6 +118,7 @@ ro.media.enc.vid.m4v.fps       = 1,30
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 debug.sf.hw=1
+debug.enabletr=false
 debug.composition.7x27A.type=mdp
 debug.hwc.dynThreshold=1.9
 media.stagefright.enable-player=true
