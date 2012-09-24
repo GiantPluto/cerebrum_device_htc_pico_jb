@@ -58,12 +58,10 @@ TARGET_NO_RADIOIMAGE := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/htc/pico/recovery/recovery_ui.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/htc/pico/recovery/graphics.c
 TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/pico/prebuilt/recovery_kernel
-TARGET_RECOVERY_INITRC := device/htc/pico/files/recovery.rc
+TARGET_RECOVERY_INITRC := device/htc/pico/prebuilt/root/recovery.rc
 TARGET_RECOVERY_FSTAB := device/htc/pico/recovery.fstab
 BOARD_RECOVERY_HANDLES_MOUNT := true
 
-# Yes we do,but let's hash it out 
-# ARCH_ARM_HAVE_VFP := true
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -77,9 +75,6 @@ TARGET_USE_SPARROW_BIONIC_OPTIMIZATION := true
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x12c00000
 BOARD_PAGE_SIZE := 0x00000800
-
-# Additional libraries
-# TARGET_PROVIDES_LIBAUDIO := true
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
