@@ -15,9 +15,6 @@
 
 USE_CAMERA_STUB := true
 
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-
 #Jb Libhwcomposer
 TARGET_NO_HW_VSYNC := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
@@ -40,7 +37,6 @@ PROTEUS_DEVICE_API := true
 MM_AUDIO_VOEM_DISABLED := false
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 BOARD_USES_ADRENO_200 := true
-MM_AUDIO_MVS_DISABLED := false
 
 # Arch related defines
 TARGET_BOARD_PLATFORM := msm7x27a
@@ -54,10 +50,12 @@ TARGET_NO_RADIOIMAGE := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/htc/pico/recovery/recovery_ui.c
 BOARD_CUSTOM_GRAPHICS := ../../../device/htc/pico/recovery/graphics.c
 TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/pico/prebuilt/recovery_kernel
-TARGET_RECOVERY_INITRC := device/htc/pico/prebuilt/root/recovery.rc
+TARGET_RECOVERY_INITRC := device/htc/pico/files/recovery.rc
 TARGET_RECOVERY_FSTAB := device/htc/pico/recovery.fstab
 BOARD_RECOVERY_HANDLES_MOUNT := true
 
+# Yes we do,but let's hash it out 
+# ARCH_ARM_HAVE_VFP := true
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -71,6 +69,9 @@ TARGET_USE_SPARROW_BIONIC_OPTIMIZATION := true
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x12c00000
 BOARD_PAGE_SIZE := 0x00000800
+
+# Additional libraries
+# TARGET_PROVIDES_LIBAUDIO := true
 
 # Fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00400000
@@ -88,6 +89,7 @@ TARGET_PREBUILT_KERNEL := device/htc/pico/prebuilt/kernel # As a fallback
 BOARD_VOLD_MAX_PARTITIONS := 24
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/usb_mass_storage/lun0/file"
 BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
@@ -107,7 +109,6 @@ TARGET_GRALLOC_USES_ASHMEM := true
 
 # Wifi related definitions
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_LEGACY_NL80211_STA_EVENTS  := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
@@ -127,20 +128,27 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pico
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Graphics
+DCHECK_FOR_EXTERNAL_FORMAT := true
 BOARD_USE_SKIA_LCDTEXT := true
 BOARD_FORCE_DITHERING := true
 USE_OPENGL_RENDERER := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
+TARGET_USES_GENLOCK := true
 TARGET_FORCE_CPU_UPLOAD := true
 BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
-COMMON_GLOBAL_CFLAGS += -DHAVE_ARM_TLS_REGISTER -DREFRESH_RATE=65 -DFORCE_CPU_UPLOAD
-COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DBINDER_COMPAT 
+COMMON_GLOBAL_CFLAGS += -DHAVE_ARM_TLS_REGISTER
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=65 -DFORCE_CPU_UPLOAD
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DBINDER_COMPAT
 
 # Webkit, browser
-WITH_JIT := true
+JS_ENGINE := v8
 HTTP := chrome
 ENABLE_WEBGL := true
 TARGET_WEBKIT_USE_MORE_MEMORY := true
+
+# JIT
+WITH_JIT := true
+ENABLE_JSC_JIT := true
 
 # ICS Stuff 
 BOARD_HAS_NO_SELECT_BUTTON := true
